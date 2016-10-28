@@ -1,4 +1,4 @@
-import Dia2810.BalancoGAA;
+import Dia2810.AdivinhaNum;
 
 public class Principal {
 
@@ -8,7 +8,7 @@ public class Principal {
 	
 	public static void main (String[] args)
 	{
-		new BalancoGAA();
+		new AdivinhaNum();
 		
 	}
 	

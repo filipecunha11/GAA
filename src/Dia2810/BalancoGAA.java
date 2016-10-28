@@ -8,15 +8,28 @@ public class BalancoGAA {
 	public BalancoGAA() {
 		System.out.println("Bom dia, ");
 		
-		Despesas();
-		Receitas();
 		
-		System.out.println("O saldo final é: " + (totalReceitas - totalDespesas));
+		int balanco = calcularBalanco(Receitas(), Despesas());
+		
+		System.out.println("\n\nO saldo é de: " + balanco);
+		
+		
+		if (balanco < 0)
+			System.out.println("O saldo é NEGATIVO!");
+		else if (balanco > 0)
+			System.out.println("O saldo é positivo!");
+		else
+			System.out.println("O saldo é neutro.");
 	}
 	
-	public void Despesas()
+	public int Despesas()
 	{
-		int agua, luz, telefone, carro;
+		int agua, 
+			luz, 
+			telefone, 
+			carro;
+		
+		System.out.println("\nDespesas: ");
 		
 		System.out.println("Insira o custo da água: ");
 		agua = (new Scanner(System.in)).nextInt();
@@ -32,13 +45,17 @@ public class BalancoGAA {
 		
 		totalDespesas = agua + luz + telefone + carro;
 		
-		System.out.println("O total de despesas é: " + totalDespesas);
+		return totalDespesas;
 		
 	}
 	
-	public void Receitas()
+	public int Receitas()
 	{
-		int quotas, recBaile, recBar;
+		int quotas, 
+			recBaile, 
+			recBar;
+		
+		System.out.println("\nReceitas: ");
 		
 		System.out.println("Insira a receita das quotas: ");
 		quotas = (new Scanner(System.in)).nextInt();
@@ -51,8 +68,15 @@ public class BalancoGAA {
 		
 		totalReceitas = quotas + recBaile + recBar;
 		
-		System.out.println("O total de receitas é: " + totalReceitas);
+		return totalReceitas;
 		
+	}
+	
+	public int calcularBalanco(int receita, int despesa)
+	{
+		int balanco = receita - despesa;
+		
+		return balanco;
 	}
 
 }
