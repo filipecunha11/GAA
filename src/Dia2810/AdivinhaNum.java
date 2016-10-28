@@ -4,8 +4,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class AdivinhaNum {
-	int escondido;
-	final int VALORMAX = 5;
+	int escondido, i = 3;
+	final int VALORMAX = 10;
 	
 	public AdivinhaNum() {
 		Random r = new Random();
@@ -13,7 +13,10 @@ public class AdivinhaNum {
 		
 		tentarAdivinhar();
 		
-		System.out.println("\n\nAcertou! O escondidinho é " + escondido);
+		if (i > 0)
+			System.out.println("\n\nACERTOU! O escondidinho é " + escondido);
+		else
+			System.out.println("\n\nAcabaram as tentativas... O escondidinho era " + escondido);
 		
 	}
 
@@ -21,16 +24,20 @@ public class AdivinhaNum {
 	{
 		int tent;
 		
-		System.out.println("Insira um número para tentar adivinhar o escondidinho:");
+		System.out.println("Insira um número para tentar adivinhar o escondidinho (0-" + VALORMAX + "):");
 		tent = (new Scanner(System.in)).nextInt();
-		if (tent != escondido)
+		while (tent != escondido && i > 0)
 		{
-			do
-			{
-				System.out.println("\nErrou, tente novamente:");
-				tent = (new Scanner(System.in)).nextInt();
-			}
-			while (tent != escondido);
+			i--;
+			if(tent > escondido)
+				System.out.println("\nO escondido é menor que " + tent);
+			else
+				System.out.println("\nO escondido é maior que " + tent);
+			
+			System.out.println(i + " tentativas.");
+			System.out.println("Tente novamente:");
+			
+			tent = (new Scanner(System.in)).nextInt();
 		}
 	}
 }
